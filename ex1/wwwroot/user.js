@@ -117,23 +117,23 @@ const checkPassword = async () => {
         alert(error, "error")
     }
 }
-const getById = async (id) => {
+//const getById = async (id) => {
 
 
-    try {
-        const responseGet = await fetch(`api/Users/${id}`);
-        if (!responseGet.ok) {
-            alert("no user")
-        }
-        else {
-            const dataGet = await responseGet.json();
-            console.log(dataGet)
-        }
+//    try {
+//        const responseGet = await fetch(`api/Users/${id}`);
+//        if (!responseGet.ok) {
+//            alert("no user")
+//        }
+//        else {
+//            const dataGet = await responseGet.json();
+//            console.log(dataGet)
+//        }
 
-    }
-    catch (error) {
-        alert(error)
-    }
-}
+//    }
+//    catch (error) {
+//        alert(error)
+//    }
+//}
 
 

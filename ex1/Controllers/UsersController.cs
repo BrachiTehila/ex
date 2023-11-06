@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc.Core.Infrastructure;
 using Zxcvbn;
 using Service;
+using Entities;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ex1.Controllers
@@ -20,9 +21,9 @@ namespace ex1.Controllers
         }
         // GET: api/<Users>
         [HttpGet]
-        public async Task<ActionResult<User>> Get([FromQuery] string email, [FromQuery] string password)
+        public async Task<ActionResult<UsersTbl>> Get([FromQuery] string email, [FromQuery] string password)
         {
-          User user= await service.getUserByEmailAndPassword(email, password);
+            UsersTbl user = await service.getUserByEmailAndPassword(email, password);
             if(user==null)
                 return NoContent();
             return Ok(user);
@@ -30,31 +31,35 @@ namespace ex1.Controllers
 
         // GET api/<Users>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Get([FromRoute]int id)
+        public string Get()
         {
-            User user = await service.getUserById(id);
-            if (user == null)
-                return NoContent();
-            return Ok(user);
+            return "value";
         }
+        //public async Task<ActionResult<User>> Get([FromRoute]int id)
+        //{
+        //    User user = await service.getUserById(id);
+        //    if (user == null)
+        //        return NoContent();
+        //    return Ok(user);
+        //}
 
         // POST api/<Users>
         [HttpPost]
-        public async Task<CreatedAtActionResult> Post([FromBody] User user)
+        public async Task<CreatedAtActionResult> Post([FromBody] UsersTbl user)
         {
-            
-            User newUser = await service.addUser(user);
+
+            UsersTbl newUser = await service.addUser(user);
             if (newUser == null)
             {
                 return null;
             }
-            return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+            return CreatedAtAction(nameof(Get), new { id = newUser.UserId }, newUser);
 
         }
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] User value)
+        public async Task Put(int id, [FromBody] UsersTbl value)
         {
             await service.updateUser(id, value);
 

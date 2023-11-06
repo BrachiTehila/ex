@@ -1,14 +1,15 @@
-﻿using ex1;
+﻿using Entities;
+
 
 namespace Service
 {
     public interface IuserService
     {
-        Task< User> addUser(User user);
+        Task<UsersTbl> addUser(UsersTbl user);
         int checkPassword(string password);
-        Task<User> getUserByEmailAndPassword(string email, string password);
-        Task updateUser(int id, User value);
-        Task<User> getUserById(int id);
+        Task<UsersTbl> getUserByEmailAndPassword(string email, string password);
+        Task updateUser(int id, UsersTbl value);
+        //Task<User> getUserById(int id);
 
     }
 }

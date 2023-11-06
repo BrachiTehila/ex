@@ -1,4 +1,5 @@
-﻿using ex1;
+﻿using Entities;
+
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,16 @@ namespace Service
         {
             this.repository = repository;
         }
-        public async Task<User> getUserByEmailAndPassword(string email, string password)
+        public async Task<UsersTbl> getUserByEmailAndPassword(string email, string password)
         {
             return await repository.getUserByEmailAndPassword(email, password);
         }
-        public async Task<User> getUserById(int id)
-        {
-           return await repository.getUserById(id);
-        }
+        //public async Task<User> getUserById(int id)
+        //{
+        //   return await repository.getUserById(id);
+        //}
 
-        public async Task< User> addUser(User user)
+        public async Task<UsersTbl> addUser(UsersTbl user)
         {
             int level = checkPassword(user.Password);
             if (level > 2)
@@ -37,7 +38,7 @@ namespace Service
         }
 
 
-        public async Task updateUser(int id, User value)
+        public async Task updateUser(int id, UsersTbl value)
         {
             await repository.updateUser(id, value);
         }
