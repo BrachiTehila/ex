@@ -38,9 +38,9 @@ namespace Service
         }
 
 
-        public async Task updateUser(int id, UsersTbl value)
+        public async Task updateUser( UsersTbl value)
         {
-            await repository.updateUser(id, value);
+            await repository.updateUser( value);
         }
         public int checkPassword(string password)
         {

@@ -59,9 +59,9 @@ namespace ex1.Controllers
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] UsersTbl value)
+        public async Task Put( [FromBody] UsersTbl value)
         {
-            await service.updateUser(id, value);
+            await service.updateUser( value);
 
         }
 

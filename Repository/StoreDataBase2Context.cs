@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Entities;
+namespace Repository;
 
 public partial class StoreDataBase2Context : DbContext
 {

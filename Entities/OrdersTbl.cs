@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Entities;
 
@@ -14,6 +15,6 @@ public partial class OrdersTbl
     public int? UserId { get; set; }
 
     public virtual ICollection<OrderItemTbl> OrderItemTbls { get; set; } = new List<OrderItemTbl>();
-
+    [JsonIgnore]
     public virtual UsersTbl? User { get; set; }
 }
